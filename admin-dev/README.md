@@ -1,6 +1,6 @@
-# breeze-hrm-dashboard
+# open-hrm-dashboard
 
-> Breeze HRM dashboard based on Vue.js
+> Open HRM dashboard based on Vue.js
 
 ## Build Setup
 

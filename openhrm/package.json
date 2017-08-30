@@ -1,5 +1,5 @@
 {
-  "name": "breeze-hrm",
+  "name": "open-hrm",
   "version": "0.0.1",
   "description": "HRM system based on node and Vue.js",
   "scripts": {

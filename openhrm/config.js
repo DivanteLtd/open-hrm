@@ -1,6 +1,6 @@
 module.exports = {
     port: 3001,
-    db: 'mongodb://localhost:27017/BreezeHR',
+    db: 'mongodb://localhost:27017/OpenHRM',
     session: process.env.SESSION_SECRET || 'Your Session Secret goes here',
 
     user: {

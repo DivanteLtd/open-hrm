@@ -4,8 +4,8 @@ const apiRoutes = ['/auth', '/lead', '/position', '/user', '/state', '/note', '/
 const config = {
   build: {
     env: require('./prod.env'),
-    index: path.resolve(__dirname, '../../breeze/public/index.html'),
-    assetsRoot: path.resolve(__dirname, '../../breeze'),
+    index: path.resolve(__dirname, '../../openhrm/public/index.html'),
+    assetsRoot: path.resolve(__dirname, '../../openhrm'),
     assetsSubDirectory: 'public/static',
     assetsPublicPath: '/',
     productionSourceMap: false,

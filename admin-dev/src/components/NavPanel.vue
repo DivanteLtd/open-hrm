@@ -5,7 +5,7 @@
     .logo-wrapper
       router-link(to='/')
         img(src='~assets/img/logo.png')
-        span Breez HRM
+        span Open HRM
 
     hr
 

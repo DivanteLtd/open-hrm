@@ -1,7 +1,7 @@
 {
-  "name": "breeze-hrm-dashboard",
+  "name": "open-hrm-dashboard",
   "version": "0.0.1",
-  "description": "Breeze HRM dashboard based on Vue.js",
+  "description": "Open HRM dashboard based on Vue.js",
   "author": "Divante",
   "private": true,
   "scripts": {

@@ -2,7 +2,7 @@
 
   footer#main-footer
     .container
-      p &copy; {{ year }} - Breeze HRM
+      p &copy; {{ year }} - Open HRM
 
 </template>
 

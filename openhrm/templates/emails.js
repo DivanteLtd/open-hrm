@@ -8,8 +8,8 @@ exports.validateEmail = (email) => {
 exports.emailTemplate =
   (email, token, baseUrl) =>
     `<div style="text-align:center;height:auto;padding:40px 0;">
-      <h1 style="margin:20px 0;">DivanteHRM</h1>
+      <h1 style="margin:20px 0;">OpenHRM</h1>
       <h3 style="margin:20px 0;">If you want to change your password, click below.</h3>
-      <div style="font-size:20px;margin-bottom:20px;color:white">Did you forgot password? BreezHRM</div>
+      <div style="font-size:20px;margin-bottom:20px;color:white">Did you forgot password? OpenHRM</div>
         <a style="background-color:white;color:#1d1726;padding:10px 20px;border-radius:10px;"href="${baseUrl}/#/page/generatePass/${email}/${token}">Click here!</a>
     </div>`;
