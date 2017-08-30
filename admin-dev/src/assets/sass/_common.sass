@@ -1,0 +1,101 @@
+html
+  font-size: $base-font-size+px
+  height: 100%
+
+body
+  font-family: $font-family-default
+  background-color: $bg-default
+  color: $font-color-default
+  min-height: 100%
+  position: relative
+  padding-bottom: 120px
+
+.box-header
+  margin-bottom: 20px
+
+fieldset
+  border: none
+  margin-bottom: 20px
+  padding-bottom: 20px
+
+  &:not(:last-child)
+    border-bottom: 1px dashed $fieldset-border-color
+
+  legend
+    margin-bottom: 15px
+    font-weight: 600
+
+.fade-enter-active, .fade-leave-active
+  transition: opacity .3s
+
+.fade-enter, .fade-leave-to
+  opacity: 0
+
+.page-content
+  padding: 30px 0 0
+
+#main-nav + .page-content
+  padding-left: $main-nav-width
+
+.container
+  width: 99%
+  max-width: 100%
+  margin: 0 auto
+  padding: 0 30px
+
+a
+  text-decoration: none
+  transition: all ease 0.2s
+  &:hover
+    text-decoration: none
+
+h1
+  +font-px-to-rem(30, 35)
+  font-weight: $fw-light
+
+h2
+  font-weight: $fw-light
+
+button
+  font-weight: $fw-light
+
+.title
+  color: $font-color-default
+  font-weight: $fw-light
+
+.input, .textarea
+  font-weight: $fw-light
+  box-shadow: none
+
+.field-label .label
+  font-weight: $fw-light
+
+.box
+  .add-section
+    margin-bottom: 20px
+
+table
+  +font-px-to-rem(12, 15)
+  font-weight: $fw-reg
+  border-radius: 5px
+
+  thead tr th
+    font-weight: $fw-semi-bold
+
+.select,
+.select select
+  width: 100%
+
+.editr
+  padding: 0
+  border: 1px solid $border-color
+
+.table
+  td
+    padding: 20px 10px
+    font-size: 1rem
+    vertical-align: middle
+    &:last-child
+      text-align: center
+      a
+        color: white

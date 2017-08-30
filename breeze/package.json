@@ -1,0 +1,29 @@
+{
+  "name": "breeze-hrm",
+  "version": "0.0.1",
+  "description": "HRM system based on node and Vue.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Divante",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.17.1",
+    "connect-mongo": "^0.8.2",
+    "cookie-parser": "^1.3.5",
+    "crypto": "0.0.3",
+    "express": "^4.15.2",
+    "express-breadcrumbs": "0.0.2",
+    "express-session": "^1.11.3",
+    "mongoose": "^4.9.8",
+    "morgan": "^1.6.1",
+    "nodemailer": "^2.6.4",
+    "passport": "^0.2.2",
+    "passport-local": "^1.0.0",
+    "xlsx": "0.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
