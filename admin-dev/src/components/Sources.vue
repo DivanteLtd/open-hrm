@@ -13,30 +13,38 @@
                 tbody
                     tr(v-for='source in sources')
                         td {{ source.name }}
-                        td
+                        td.actions
                             a(@click='deleteSource(source._id)' class='button is-warning')
                                 span.icon.is-small
                                     i.fa.fa-trash-o
                                 span Delete
+        info(:infoText='infoText')
 </template>
 
 <script>
 
   import Sources from '../api/Sources'
+  import Info from '@/components/common/Info'
 
   export default {
     name: 'sources',
+    components: {
+      Info
+    },
     data () {
       return {
         sources: null,
         newElement: {
           name: ''
-        }
+        },
+        infoText: `It's key to have information about from where the profile has been acquired. Using this dictionary you can tag candidates with information if they came from Linkedin
+        research, personal referrals from other employees or maybe they used Job Portal. In next version we plan to build some statistical features around this :)`
       }
     },
     mounted () {
       this.getSources()
     },
+
     methods: {
       getSources: function () {
         Sources.getAll().then(res => {

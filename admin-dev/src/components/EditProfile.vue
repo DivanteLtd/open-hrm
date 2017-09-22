@@ -24,7 +24,7 @@
                                     .field
                                         .control
                                             input(class='input' name='shortName' type='text' v-model='user.profile.shortname' v-validate="'required'")
-                                            p(class="help is-danger" v-show="errors.has('fullName')") {{ errors.first('shortname') }}
+                                            p(class="help is-danger" v-show="errors.has('shortName')") {{ errors.first('shortname') }}
 
                             .field.is-horizontal
                                 .field-label.is-normal
@@ -33,7 +33,7 @@
                                     .field
                                         .control
                                             input(class='input' name='email' type='email' v-model='user.email' v-validate="'required|email'")
-                                            p(class="help is-danger" v-show="errors.has('fullName')") {{ errors.first('email') }}
+                                            p(class="help is-danger" v-show="errors.has('email')") {{ errors.first('email') }}
 
                         fieldset
                             legend Additional
@@ -88,7 +88,17 @@
     name: 'editProfile',
     data () {
       return {
-        user: ''
+        user: {
+          profile: {
+            name: '',
+            shortname: '',
+            location: '',
+            website: ''
+          },
+          email: '',
+          password: '',
+          repassword: ''
+        }
       }
     },
     mounted () {

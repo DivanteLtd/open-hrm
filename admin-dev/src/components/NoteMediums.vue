@@ -1,6 +1,6 @@
 <template lang="pug">
     .container
-        h1.box-header Note medium
+        h1.box-header Note type
         .box
             .add-section
                 form(@submit.prevent='addNewMedium')
@@ -13,15 +13,17 @@
                 tbody
                     tr(v-for='medium in mediums')
                         td {{ medium.name }}
-                        td
+                        td.actions
                             a(@click='deleteMedium(medium._id)' class='button is-warning')
                                 span.icon.is-small
                                     i.fa.fa-trash-o
                                 span Delete
+        info(:infoText='emptyText' v-show="mediums.length == 0")
 </template>
 
 <script>
   import Mediums from '../api/Mediums'
+  import Info from '@/components/common/Info'
 
   export default {
     name: 'mediums',
@@ -30,11 +32,17 @@
         mediums: null,
         newElement: {
           name: ''
-        }
+        },
+        emptyText: `Note category is a dictionary used to categorize comments, notes, attachments
+assigned to candidates. Using this categorization you can easily find specific resources assigned
+to your profiles. To see it in action go to <a href='#/'>Profile</a> section and start editing one!`
       }
     },
     mounted () {
       this.getMediums()
+    },
+    components: {
+      Info
     },
     methods: {
       getMediums: function () {

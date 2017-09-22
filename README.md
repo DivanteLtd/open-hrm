@@ -4,3 +4,8 @@
 
 + admin-dev - all front-end dashboard files
 + openhrm - server and admin build files
+
+
+
+node ./node_modules/mongodb-migrate -runmm
+node ./node_modules/mongodb-migrate -runmm down 

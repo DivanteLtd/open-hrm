@@ -1,9 +1,11 @@
 <template lang="pug">
 
     .container
-        h1.box-header Add new candidate
+        .is-clearfix.box-header
+            h1.is-pulled-left Add new candidate
+            button(@click='addNewCandidate' class='button is-primary is-pulled-right is-clearfix' ) Submit
         .box
-            form(@submit.prevent='addNewCandidate')
+            form(@submit.prevent='addNewCandidate' id="candidate-form")
                 div.columns
                     div.column.is-half
                         fieldset
@@ -199,7 +201,7 @@
                                         .control
                                             input(class='input' name='facebook' type='text' v-model='candidate.contact.social.facebook')
                 .field
-                    .control
+                    .control.is-pulled-right-text
                         button.button.is-primary Submit
 </template>
 

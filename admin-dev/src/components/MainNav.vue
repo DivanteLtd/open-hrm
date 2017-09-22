@@ -13,7 +13,7 @@
       li
         router-link(to='/positions') Positions
       li
-        router-link(to='/medium') Note mediums
+        router-link(to='/medium') Note type
       li
         router-link(to='/states') States
       li
@@ -21,7 +21,7 @@
       li
         router-link(to='/userslist') User list
       li
-        router-link(to='/editprofile') Edit profile
+        router-link(to='/editprofile') Edit Your profile
       li
         router-link(to='/logout') Logout
 
