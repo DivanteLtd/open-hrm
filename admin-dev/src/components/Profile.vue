@@ -1,8 +1,11 @@
 <template lang="pug">
 
     .container
-        h2.title.is-2 Candidate profile
-
+        header.is-clearfix
+            h1.box-header.is-pulled-left Candidate profile
+            router-link(
+            :to="{ name: 'Edit profile' }"
+            class='button is-primary is-pulled-right') Add User
         section.profile-main-info
             .columns.box
                 .column.top-box
@@ -13,9 +16,23 @@
                     p.has-text-weight-semibold {{ this.$store.getters.getUserName(details.owner) }}
                     p Registered by:
                     p.has-text-weight-bold {{ this.$store.getters.getUserName(details.createdBy)}}
-                .column bb
-                .column cc
-                .column dd
+                .column
+                    p Added: {{ details.createdAt | formatDate }}
+                    p State: {{ this.$store.getters.getStateName(details.state) }}
+                    p Source: {{ this.$store.getters.getSourceName(details.source) }}
+                    p Last company: {{ details.contact.companyName }}
+                    p Last position: {{ details.contact.companyPosition }}
+                .column
+                    p City: {{ details.contact.city }}
+                    p Country: {{ details.contact.country }}
+                    p Phone: {{ details.contact.phone }}
+                    p Email: {{ details.contact.email }}
+
+                    .div(v-show='hasSocialLinks()')
+                        p(v-for='(link, key) in details.contact.social' v-if='link')
+                            a(:href='link' target='_blank') <i class='fa fa-share-alt'></i> {{ key }}
+                .column
+                    p Tags: {{ details.tags }}
 
 
 
