@@ -61,7 +61,11 @@
           this.getSources()
           this.addSuccessMessage('Source has been deleted!')
         }, res => {
-          this.addErrorMessage()
+          if (res.data.error) {
+            this.addErrorMessage(res.data.error)
+          } else {
+            this.addErrorMessage()
+          }
         }).catch(err => {
           console.error(err)
           this.addErrorMessage()

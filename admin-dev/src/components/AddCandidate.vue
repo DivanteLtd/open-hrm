@@ -1,5 +1,4 @@
 <template lang="pug">
-
     .container
         .is-clearfix.box-header
             h1.is-pulled-left Add new candidate
@@ -79,8 +78,64 @@
                                                     option(v-for='state in $store.state.states'
                                                       :value='state._id') {{ state.name }}
                                             p(class="help is-danger" v-show="errors.has('state')") {{ errors.first('state') }}
+                        fieldset
+                            legend Languages
+                            LanguageFields(:language="candidate.language")
+
+                        fieldset
+                            legend Education
+                            EducationFields(:education="candidate.education")
+
+                        fieldset
+                            legend Experience
+                            ExperienceFields(:experience="candidate.experience")
 
 
+                        fieldset
+                            legend Social networks
+
+                            .field.is-horizontal
+                                .field-label.is-normal
+                                    label.label linkedin.com/
+                                .field-body
+                                    .field
+                                        .control
+                                            input(class='input' name='linkedin' type='text' v-model='candidate.contact.social.linkedin')
+
+                            .field.is-horizontal
+                                .field-label.is-normal
+                                    label.label goldenline.pl/
+                                .field-body
+                                    .field
+                                        .control
+                                            input(class='input' name='goldenline' type='text' v-model='candidate.contact.social.goldenline')
+
+                            .field.is-horizontal
+                                .field-label.is-normal
+                                    label.label facebook.com/
+                                .field-body
+                                    .field
+                                        .control
+                                            input(class='input' name='facebook' type='text' v-model='candidate.contact.social.facebook')
+
+                        .field.is-horizontal
+                            .field-label.is-normal
+                                label.label Tags
+                            .field-body
+                                .field
+                                    .control
+                                        input(class='input' name='tags' type='text' v-model='candidate.tags')
+
+                        .field.is-horizontal
+                            .field-label.is-normal
+                                label.label New Note
+                            .field-body
+                                .field
+                                    .control
+                                        wysiwyg(class='textarea' name='note' type='text' v-model='candidate.note' rows="6" resize="none")
+
+
+                    div.column.is-half
                         fieldset
                             legend Additional
 
@@ -113,48 +168,7 @@
                                                       :value='source._id') {{ source.name }}
                                             p(class="help is-danger" v-show="errors.has('source')") {{ errors.first('source') }}
 
-                        .field.is-horizontal
-                            .field-label.is-normal
-                                label.label Tags
-                            .field-body
-                                .field
-                                    .control
-                                        input(class='input' name='tags' type='text' v-model='candidate.tags')
 
-                        .field.is-horizontal
-                            .field-label.is-normal
-                                label.label Experience
-                            .field-body
-                                .field
-                                    .control
-                                        input(class='input' name='experience' type='text' v-model='candidate.experience')
-
-                        .field.is-horizontal
-                            .field-label.is-normal
-                                label.label Language
-                            .field-body
-                                .field
-                                    .control
-                                        input(class='input' name='language' type='text' v-model='candidate.language')
-
-                        .field.is-horizontal
-                            .field-label.is-normal
-                                label.label Education
-                            .field-body
-                                .field
-                                    .control
-                                        input(class='input' name='education' type='text' v-model='candidate.education')
-
-                        .field.is-horizontal
-                            .field-label.is-normal
-                                label.label New Note
-                            .field-body
-                                .field
-                                    .control
-                                        wysiwyg(class='textarea' name='note' type='text' v-model='candidate.note' rows="6" resize="none")
-
-
-                    div.column.is-half
                         fieldset
                             legend Last company
 
@@ -175,31 +189,49 @@
                                             input(class='input' name='companyPosition' type='text' v-model='candidate.contact.companyPosition')
 
                         fieldset
-                            legend Social networks
+                            legend Salary
 
                             .field.is-horizontal
                                 .field-label.is-normal
-                                    label.label linkedin.com/
+                                    label.label Contract
                                 .field-body
                                     .field
                                         .control
-                                            input(class='input' name='linkedin' type='text' v-model='candidate.contact.social.linkedin')
+                                            input(class='input' name='contract' type='text' v-model='candidate.salary.contract')
 
                             .field.is-horizontal
                                 .field-label.is-normal
-                                    label.label goldenline.pl/
+                                    label.label Net
                                 .field-body
                                     .field
                                         .control
-                                            input(class='input' name='goldenline' type='text' v-model='candidate.contact.social.goldenline')
+                                            input(class='input' name='net' type='number' v-model='candidate.salary.net')
 
                             .field.is-horizontal
                                 .field-label.is-normal
-                                    label.label facebook.com/
+                                    label.label Gross
                                 .field-body
                                     .field
                                         .control
-                                            input(class='input' name='facebook' type='text' v-model='candidate.contact.social.facebook')
+                                            input(class='input' name='gross' type='number' v-model='candidate.salary.gross')
+
+                            .field.is-horizontal
+                                .field-label.is-normal
+                                    label.label Cost
+                                .field-body
+                                    .field
+                                        .control
+                                            input(class='input' name='cost' type='number' v-model='candidate.salary.cost')
+
+                            .field.is-horizontal
+                                .field-label.is-normal
+                                    label.label Currency
+                                .field-body
+                                    .field
+                                        .control
+                                            input(class='input' name='currency' type='text' v-model='candidate.salary.currency')
+
+
                 .field
                     .control.is-pulled-right-text
                         button.button.is-primary Submit
@@ -207,9 +239,17 @@
 
 <script>
   import Candidates from '../api/Candidates'
+  import LanguageFields from '@/components/addCandidate/LanguageFields'
+  import EducationFields from '@/components/addCandidate/EducationFields'
+  import ExperienceFields from '@/components/addCandidate/ExperienceFields'
 
   export default {
     name: 'add-candidate',
+    components: {
+      LanguageFields,
+      EducationFields,
+      ExperienceFields
+    },
     data () {
       return {
         candidate: {
@@ -226,11 +266,18 @@
             companyPosition: '',
             city: ''
           },
+          salary: {
+            contract: '',
+            net: '',
+            gross: '',
+            cost: '',
+            currency: ''
+          },
           subtitle: '',
           tags: '',
-          experience: '',
-          language: '',
-          education: '',
+          experience: [{language: '', level: '', position: '', company: ''}],
+          language: [{language: '', level: ''}],
+          education: [{from: '', to: '', school: ''}],
           additional: {
             recruiter: ''
           },

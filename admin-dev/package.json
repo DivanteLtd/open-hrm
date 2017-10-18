@@ -26,6 +26,7 @@
     "vue-router": "^2.3.1",
     "vue-trumbowyg": "^1.0.3",
     "vue-wysiwyg": "^1.2.6",
+    "vuejs-datepicker": "^0.9.17",
     "vuex": "^2.3.1"
   },
   "devDependencies": {

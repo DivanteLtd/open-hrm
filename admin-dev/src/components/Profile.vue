@@ -9,6 +9,8 @@
         section.profile-main-info
             .columns.box
                 .column.top-box
+                    div.avatar-box
+                        img(src='~assets/img/dummy.png')
                     h4.title.has-text-centered.is-4 {{ details.contact.fullName }}
                     p.has-text-centered {{ this.$store.getters.getPositionName(details.subtitle) }}
                     hr
@@ -16,17 +18,23 @@
                     p.has-text-weight-semibold {{ this.$store.getters.getUserName(details.owner) }}
                     p Registered by:
                     p.has-text-weight-bold {{ this.$store.getters.getUserName(details.createdBy)}}
-                .column
+                .column.profile-basic-info
                     p Added: {{ details.createdAt | formatDate }}
                     p State: {{ this.$store.getters.getStateName(details.state) }}
                     p Source: {{ this.$store.getters.getSourceName(details.source) }}
                     p Last company: {{ details.contact.companyName }}
                     p Last position: {{ details.contact.companyPosition }}
-                .column
+                .column.profile-basic-info
                     p City: {{ details.contact.city }}
                     p Country: {{ details.contact.country }}
-                    p Phone: {{ details.contact.phone }}
-                    p Email: {{ details.contact.email }}
+                    p
+                        span.icon
+                            i.fa.fa-phone.fa-lg
+                        a(:href="'tel:' + details.contact.phone") {{ details.contact.phone }}
+                    p
+                        span.icon
+                            i.fa.fa-envelope.fa-lg
+                        a(:href="'mail:' + details.contact.email") {{ details.contact.email }}
 
                     .div(v-show='hasSocialLinks()')
                         p(v-for='(link, key) in details.contact.social' v-if='link')
@@ -34,7 +42,14 @@
                 .column
                     p Tags: {{ details.tags }}
 
-
+        .columns
+            .column
+                Experience(:experience="details.experience")
+                Education(:education="details.education")
+                Language(:languages="details.language")
+                Salary(:salary="details.salary")
+                Files
+            .column bbb
 
         .columns(v-if='details')
             .column.is-3
@@ -108,6 +123,11 @@
 <script>
   import Candidates from '../api/Candidates'
   import Notes from '../api/Notes'
+  import Experience from '@/components/profile/Experience'
+  import Education from '@/components/profile/Education'
+  import Language from '@/components/profile/Language'
+  import Salary from '@/components/profile/Salary'
+  import Files from '@/components/profile/Files'
 
   export default {
     name: 'profile',
@@ -122,6 +142,13 @@
     mounted () {
       this.getCandidate(this.id)
       this.getNotes(this.id)
+    },
+    components: {
+      Experience,
+      Education,
+      Language,
+      Salary,
+      Files
     },
     methods: {
       getCandidate: function (id) {
@@ -223,6 +250,15 @@
         hr
             border-top: 2px dashed white
             background: $color5
+        .avatar-box
+            margin: 15px 0
+            img
+                margin: 0 auto
+                display: block
+        .profile-basic-info
+            padding-left: 4%
+            p
+                margin-bottom: 20px
 
     h4
         font-weight: $fw-semi-bold
@@ -241,12 +277,8 @@
             display: block
             text-align: left
 
-        p a
-            display: block
-
         i
             position: relative
-            top: 3px
             margin-right: 10px
 
     .new-note

@@ -10,7 +10,7 @@
                         p.control.is-expanded
                             input(v-model='newElement.name' class='input' placeholder='Name' v-validate="'required'" name="name" v-bind:class="{'is-danger': errors.first('name') }")
                         p.control
-                            button.button.is-primary Add new source
+                            button.button.is-primary Add new state
             table.table.is-bordered.is-striped
                 tbody
                     tr(v-for='state in states')
@@ -62,7 +62,11 @@
           this.getStates()
           this.addSuccessMessage('State has been deleted!')
         }, res => {
-          this.addErrorMessage()
+          if (res.data.error) {
+            this.addErrorMessage(res.data.error)
+          } else {
+            this.addErrorMessage()
+          }
         }).catch(err => {
           console.error(err)
           this.addErrorMessage()

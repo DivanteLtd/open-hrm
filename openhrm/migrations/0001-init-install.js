@@ -1,4 +1,3 @@
-
 exports.up = function (db, next) {
   let sources = db.collection('sources');
   let positions = db.collection('positions');
