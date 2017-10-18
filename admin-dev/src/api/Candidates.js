@@ -9,6 +9,9 @@ const Candidates = {
   },
   addCandidate (data) {
     return Vue.http.post('lead', data)
+  },
+  deleteCandidate (candidateID) {
+    return Vue.http.delete('lead/' + candidateID)
   }
 }
 

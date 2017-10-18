@@ -144,15 +144,24 @@ route.delete('/:id', (req, res) => {
 
     let stateId = req.params.id;
 
-    db.remove(State, { _id: stateId })
-        .then(() => {
-            res.statusCode = statusCode.deleted;
-            res.send();
-        })
-        .catch(() => {
-            res.statusCode = statusCode.notfound;
-            res.send();
-        });
+  State.count({},( err, count) =>{
+        if(count > 1){
+              db.remove(State, { _id: stateId })
+                .then(() => {
+                      res.statusCode = statusCode.deleted;
+                      res.send();
+                })
+                .catch(() => {
+                      res.statusCode = statusCode.notfound;
+                      res.send();
+                });
+        }else{
+              res.statusCode = statusCode.bad;
+              res.json({
+                error: "You have to have at least one default state to make all the things up and runing!"
+              });
+        }
+  })
 });
 
 module.exports = route;

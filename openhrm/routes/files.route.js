@@ -9,7 +9,7 @@ var express = require('express'),
     route = express.Router(),
     path = require('path'),
     crypto = require('crypto'),
-    uploadPath = path.resolve('./../public/app/uploads');
+    uploadPath = path.resolve('./public/uploads');
 
 
 
@@ -73,7 +73,7 @@ route.post('/', (req, res) => {
         file.type = extn.replace('.','');
         file.hash = hash;
         file.owner = req.user._id;
-        file.parentId = req.headers.lid || '';
+        file.parentId = req.lid || '';
 
         db.save(file)
             .then((doc) => {

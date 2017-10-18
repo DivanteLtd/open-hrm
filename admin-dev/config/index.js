@@ -1,6 +1,6 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 const path = require('path')
-const apiRoutes = ['/auth', '/lead', '/position', '/user', '/state', '/note', '/source', '/medium']
+const apiRoutes = ['/auth', '/lead', '/position', '/user', '/state', '/note', '/source', '/medium', '/files']
 const config = {
   build: {
     env: require('./prod.env'),

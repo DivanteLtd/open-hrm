@@ -1,0 +1,28 @@
+$profile-box-border-color: #dfe1e2
+
+.profile-box
+  margin-bottom: 20px
+  .profile-box-header
+    background-color: $color5
+    color: white
+    padding: 10px
+    font-weight: 100
+  .profile-box-content
+    background-color: white
+    border: solid 1px $profile-box-border-color
+
+    li
+      border: 1px $profile-box-border-color
+      border-style: solid none
+      padding: 10px
+      &:first-child
+        border-top: none
+      &:last-child
+        border-bottom: none
+
+    table
+      td:not(:last-child)
+        border-right: 1px solid $profile-box-border-color
+      tr:last-child
+        td
+          border-bottom: none

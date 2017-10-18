@@ -16,6 +16,7 @@
     "express": "^4.15.2",
     "express-breadcrumbs": "0.0.2",
     "express-session": "^1.11.3",
+    "mongodb-migrate": "^2.0.2",
     "mongoose": "^4.9.8",
     "morgan": "^1.6.1",
     "nodemailer": "^2.6.4",

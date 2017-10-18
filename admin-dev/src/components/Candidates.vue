@@ -1,12 +1,12 @@
 <template lang="pug">
 
     .container
-        h1 Candidates List
+        h1.box-header Candidates List
         router-link(
         :to="{ name: 'addCandidate' }"
         class='button is-primary is-pulled-right') Add Candidate
         search(:searchAction='searchCandidate')
-        table.table.is-bordered.is-striped
+        table.table.is-bordered.is-striped.is-responsive
 
             thead
                 tr.sort-header

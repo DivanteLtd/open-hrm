@@ -144,15 +144,25 @@ route.delete('/:id', (req, res) => {
 
     let positionId = req.params.id;
 
-    db.remove(Source, { _id: positionId })
-        .then(() => {
-            res.statusCode = statusCode.deleted;
-            res.send();
-        })
-        .catch(() => {
-            res.statusCode = statusCode.notfound;
-            res.send();
-        });
+    Source.count({},( err, count) =>{
+        if(count > 1){
+              db.remove(Source, { _id: positionId })
+                .then(() => {
+                    res.statusCode = statusCode.deleted;
+                    res.send();
+                })
+                .catch(() => {
+                    res.statusCode = statusCode.notfound;
+                    res.send();
+                });
+          }else{
+              res.statusCode = statusCode.bad;
+              res.json({
+                error: "You have to have at least one default source to make all the things up and runing!"
+              });
+      }
+    })
+
 });
 
 module.exports = route;
